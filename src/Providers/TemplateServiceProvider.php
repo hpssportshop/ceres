@@ -10,6 +10,7 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Templates\Twig;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ConfigRepository;
+use Ceres\Providers\CeresRouteServiceProvider;
 
 /**
  * Class TemplateServiceProvider
@@ -42,7 +43,10 @@ class TemplateServiceProvider extends ServiceProvider
         'tpl.page-not-found'     => 'StaticPages.PageNotFound'          // provide template to use for page not found
     ];
 
-    public function register(){}
+    public function register() 
+    {
+        $this->getApplication()->register(CeresRouteServiceProvider::class);    
+    }
     
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
     {
@@ -53,6 +57,17 @@ class TemplateServiceProvider extends ServiceProvider
                 $templateContainer->setTemplate('Ceres::' . self::$templateKeyToViewMap[$templateContainer->getTemplateKey()]);
 
         }, self::EVENT_LISTENER_PRIORITY);
+
+        // provide templates to use for static pages
+        $eventDispatcher->listen('IO.tpl.hockey', function(TemplateContainer $container, $templateData) {
+            $container->setTemplate("Ceres::StaticPages.Hockey");
+            return false;
+        });
+         // provide templates to use for static pages
+        $eventDispatcher->listen('IO.tpl.tennis', function(TemplateContainer $container, $templateData) {
+            $container->setTemplate("Ceres::StaticPages.Tennis");
+            return false;
+        });
 
         // provide mapped category IDs - DEPRECATED?
         $eventDispatcher->listen('init.categories', function (CategoryMap $categoryMap) use (&$config) {
