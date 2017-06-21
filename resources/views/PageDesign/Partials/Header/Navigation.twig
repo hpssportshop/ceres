@@ -3,20 +3,24 @@
 {% set lang         = services.sessionStorage.getLang() %}
 {% set showHeaderNavBar = config("Ceres.header.show_navbars") %}
 {% set companyName  = config("Ceres.header.company_name") %}
+<div class="brand-container">
+    <div class="container-max">
+        <div class="row">
+            <div class="brand-wrapper" {% if showHeaderNavBar == "side" %}style="position: relative"{% endif %}>
+                <a class="navbar-brand pull-lg-left" href="/">
+                     <img alt="{{ companyName }}" src="/images/gallery/welcome-page/HPLogoFarbe2016.jpg" class="img-fluid"/>
+                </a>
 
+                <button id="btnMainMenuToggler" class="navbar-toggler hidden-lg-up" type="button">
+                 &#9776;
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <nav class="navbar">
       <div class="container-max">
         <div class="row">
-             <div class="brand-wrapper" {% if showHeaderNavBar == "side" %}style="position: relative"{% endif %}>
-                 <a class="navbar-brand pull-lg-left" href="/">
-                         <img alt="{{ companyName }}" src="/images/gallery/welcome-page/HPLogoFarbe2016.jpg" class="img-fluid"/>
-                 </a>
-
-                 <button id="btnMainMenuToggler" class="navbar-toggler hidden-lg-up" type="button">
-                     &#9776;
-                 </button>
-             </div>
-
             <div id="mainNavbarCollapsable">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a>{{ trans("Ceres::Template.generalBigAll") }}</a></li>

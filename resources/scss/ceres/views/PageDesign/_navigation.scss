@@ -151,16 +151,18 @@ body.menu-is-visible { overflow-y : hidden; }
 		ul.mainmenu {
 			color : $menu-color-lg;
 			text-align: right;
+			width: 100%;
 			.open>ul { display : none!important; }
 			>li {
 				display : inline-block;
 				width 	: auto;
-				position: relative;
+				position: static;
 				transition: all 300ms;
 				>a { padding: 1.3rem 1rem; }
 				>ul {
 
-					display 		: block;
+					display 		: flex;
+					flex-wrap 		: wrap;
 					visibility 		: hidden;
 					opacity 		: 0;
 					transition 		: all .1s ease;
@@ -174,7 +176,8 @@ body.menu-is-visible { overflow-y : hidden; }
 						background 	: $menu-big-menu-li-bg;
 						color 		: $menu-big-menu-li-color;
 						transition  : all .1s ease;
-						width 		: 100%;
+						width 		: 25%;
+						text-align 	: left;
 
 						&:hover {
 							background  	: $menu-big-menu-li-bg-hover;
