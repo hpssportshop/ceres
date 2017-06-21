@@ -97,11 +97,16 @@
 .brand-container {
 	background: $navbar-background-color;
 	border-bottom:1px solid $gray-light;
+	.pull-md-right {
+		img {
+			max-height: 8rem;
+		}
+	}
 }
 //navigation scss
 .wrapper-main {
 	#page-body {
-		margin-top: 118px;
+		margin-top: 201px;
 	}
 	
 	.navbar{
