@@ -94,16 +94,16 @@
 		}
 	}
 }
-
+.brand-container {
+	background: $navbar-background-color;
+	border-bottom:1px solid $gray-light;
+}
 //navigation scss
 .wrapper-main {
 	#page-body {
 		margin-top: 118px;
 	}
-	.brand-container {
-		background: $navbar-background-color;
-		border-bottom:1px solid $gray-light;
-	}
+	
 	.navbar{
 		font-family:$font-family-heading;
 		background:$navbar-background-color;
@@ -340,7 +340,7 @@
 @include media-breakpoint-up(lg){
 
 	.brand-wrapper{
-		position: absolute;
+		position: relative;
 		top: 50%;
 		transform: translateY(-50%);
 		z-index:1000;

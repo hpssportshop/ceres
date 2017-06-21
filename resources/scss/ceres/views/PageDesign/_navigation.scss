@@ -171,6 +171,7 @@ body.menu-is-visible { overflow-y : hidden; }
 					top 			: 100%;
 					width 			: 100%;
 					text-align 		: center;
+					min-height: 15em;
 
 					>li {
 						background 	: $menu-big-menu-li-bg;

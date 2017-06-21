@@ -28,7 +28,12 @@
                 </ul>
                 {% if showHeaderNavBar == "top" or showHeaderNavBar == "both" or not services.template.isCategory() %}
                     <ul class="mainmenu pull-lg-right">
-                        {{ Tree.get_nav_bar(categories, "") }}
+                        {% if services.template.isHome() %}
+                            <li><a href="/hockey" title="Hockey">Hockey</a></li>
+                            <li><a href="/tennis" title="Tennis">Tennis</a></li>
+                        {% else %}
+                            {{ Tree.get_nav_bar(categories, "") }}
+                        {% endif %}
                     </ul>
                 {% endif %}
             </div>
